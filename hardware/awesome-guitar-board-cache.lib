@@ -295,6 +295,19 @@ X IO33 9 -900 -250 200 R 50 50 1 1 I
 ENDDRAW
 ENDDEF
 #
+# open-automation_GND
+#
+DEF open-automation_GND #PWR 0 0 Y Y 1 F P
+F0 "#PWR" 0 -250 50 H I C CNN
+F1 "open-automation_GND" 0 -150 50 H V C CNN
+F2 "" 0 0 50 H V C CNN
+F3 "" 0 0 50 H V C CNN
+DRAW
+P 6 0 1 0 0 0 0 -50 50 -50 0 -100 -50 -50 0 -50 N
+X GND 1 0 0 0 D 50 50 1 1 W N
+ENDDRAW
+ENDDEF
+#
 # open-automation_LED-GREEN-LTST-C191GKT
 #
 DEF open-automation_LED-GREEN-LTST-C191GKT D 0 40 Y N 1 F N
