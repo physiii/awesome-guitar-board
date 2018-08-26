@@ -1,43 +1,10 @@
-EESchema Schematic File Version 2
-LIBS:power
-LIBS:device
-LIBS:switches
-LIBS:relays
-LIBS:motors
-LIBS:transistors
-LIBS:conn
-LIBS:linear
-LIBS:regul
-LIBS:74xx
-LIBS:cmos4000
-LIBS:adc-dac
-LIBS:memory
-LIBS:xilinx
-LIBS:microcontrollers
-LIBS:dsp
-LIBS:microchip
-LIBS:analog_switches
-LIBS:motorola
-LIBS:texas
-LIBS:intel
-LIBS:audio
-LIBS:interface
-LIBS:digital-audio
-LIBS:philips
-LIBS:display
-LIBS:cypress
-LIBS:siliconi
-LIBS:opto
-LIBS:atmel
-LIBS:contrib
-LIBS:valves
-LIBS:open-automation
+EESchema Schematic File Version 4
 LIBS:awesome-guitar-board-cache
-EELAYER 25 0
+EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 4
+Sheet 1 5
 Title ""
 Date ""
 Rev ""
@@ -62,7 +29,13 @@ $EndSheet
 $Sheet
 S 6900 1950 1450 1125
 U 59CD09F1
-F0 "wireless" 60
-F1 "wireless.sch" 60
+F0 "microcontroller" 60
+F1 "microcontroller.sch" 60
+$EndSheet
+$Sheet
+S 2800 3650 1475 1075
+U 5B847ED8
+F0 "aduio codec" 50
+F1 "digital-codec.sch" 50
 $EndSheet
 $EndSCHEMATC
