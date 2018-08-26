@@ -437,7 +437,7 @@ F 4 "LTST-C191GKT" H 2400 4100 60  0001 C CNN "Part Number"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L open-automation:R_1M R_1k?
+L awesome-guitar-board-rescue:R_1M-open-automation R_1k?
 U 1 1 5B841CCE
 P 3950 5725
 F 0 "R_1k?" H 4020 5771 50  0000 L CNN
@@ -449,7 +449,7 @@ F 4 "RC0603JR-071KL" V 4130 5825 60  0001 C CNN "Part Number"
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:R_1M R_1k?
+L awesome-guitar-board-rescue:R_1M-open-automation R_1k?
 U 1 1 5B841D8A
 P 3625 6175
 F 0 "R_1k?" H 3695 6221 50  0000 L CNN
