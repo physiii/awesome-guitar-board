@@ -1,10 +1,12 @@
 EESchema Schematic File Version 4
+LIBS:power
+LIBS:74xx
 LIBS:awesome-guitar-board-cache
 EELAYER 26 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 5
+Sheet 1 4
 Title ""
 Date ""
 Rev ""
@@ -29,13 +31,7 @@ $EndSheet
 $Sheet
 S 6900 1950 1450 1125
 U 59CD09F1
-F0 "microcontroller" 60
-F1 "microcontroller.sch" 60
-$EndSheet
-$Sheet
-S 2800 3650 1475 1075
-U 5B847ED8
-F0 "aduio codec" 50
-F1 "digital-codec.sch" 50
+F0 "wireless" 60
+F1 "wireless.sch" 60
 $EndSheet
 $EndSCHEMATC

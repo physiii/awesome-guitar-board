@@ -1,4 +1,6 @@
 EESchema Schematic File Version 4
+LIBS:power
+LIBS:74xx
 LIBS:awesome-guitar-board-cache
 EELAYER 26 0
 EELAYER END
