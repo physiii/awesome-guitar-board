@@ -21,9 +21,10 @@
 #if !defined (LWS_PLUGIN_STATIC)
 #define LWS_DLL
 #define LWS_INTERNAL
-#include "../lib/libwebsockets.h"
+#include <libwebsockets.h>
 #endif
 
+#include <stdlib.h>
 #include <string.h>
 #include <fcntl.h>
 #include <sys/types.h>
@@ -35,14 +36,15 @@
 
 struct per_session_data__post_demo {
 	struct lws_spa *spa;
-	char result[LWS_PRE + 512];
-	int result_len;
-
+	char result[LWS_PRE + 2048];
 	char filename[64];
 	long file_length;
-#if !defined(LWS_WITH_ESP8266)
+#if !defined(LWS_WITH_ESP32)
 	lws_filefd_type fd;
 #endif
+	uint8_t completed:1;
+	uint8_t sent_headers:1;
+	uint8_t sent_body:1;
 };
 
 static const char * const param_names[] = {
@@ -65,16 +67,20 @@ file_upload_cb(void *data, const char *name, const char *filename,
 {
 	struct per_session_data__post_demo *pss =
 			(struct per_session_data__post_demo *)data;
+#if !defined(LWS_WITH_ESP32)
 	int n;
+
+	(void)n;
+#endif
 
 	switch (state) {
 	case LWS_UFS_OPEN:
-		strncpy(pss->filename, filename, sizeof(pss->filename) - 1);
+		lws_strncpy(pss->filename, filename, sizeof(pss->filename));
 		/* we get the original filename in @filename arg, but for
 		 * simple demo use a fixed name so we don't have to deal with
 		 * attacks  */
-#if !defined(LWS_WITH_ESP8266)
-		pss->fd = (lws_filefd_type)open("/tmp/post-file",
+#if !defined(LWS_WITH_ESP32)
+		pss->fd = (lws_filefd_type)(long long)lws_open("/tmp/post-file",
 			       O_CREAT | O_TRUNC | O_RDWR, 0600);
 #endif
 		break;
@@ -87,17 +93,17 @@ file_upload_cb(void *data, const char *name, const char *filename,
 			if (pss->file_length > 100000)
 				return 1;
 
-#if !defined(LWS_WITH_ESP8266)
-			n = write((int)pss->fd, buf, len);
-			lwsl_notice("%s: write %d says %d\n", __func__, len, n);
+#if !defined(LWS_WITH_ESP32)
+			n = write((int)(long long)pss->fd, buf, len);
+			lwsl_info("%s: write %d says %d\n", __func__, len, n);
 #else
 			lwsl_notice("%s: Received chunk size %d\n", __func__, len);
 #endif
 		}
 		if (state == LWS_UFS_CONTENT)
 			break;
-#if !defined(LWS_WITH_ESP8266)
-		close((int)pss->fd);
+#if !defined(LWS_WITH_ESP32)
+		close((int)(long long)pss->fd);
 		pss->fd = LWS_INVALID_FILE;
 #endif
 		break;
@@ -106,13 +112,59 @@ file_upload_cb(void *data, const char *name, const char *filename,
 	return 0;
 }
 
+/*
+ * returns length in bytes
+ */
+
+static int
+format_result(struct per_session_data__post_demo *pss)
+{
+	unsigned char *p, *start, *end;
+	int n;
+
+	p = (unsigned char *)pss->result + LWS_PRE;
+	start = p;
+	end = p + sizeof(pss->result) - LWS_PRE - 1;
+
+	p += lws_snprintf((char *)p, end -p,
+			"<!DOCTYPE html><html lang=\"en\"><head>"
+			"<meta charset=utf-8 http-equiv=\"Content-Language\" "
+			"content=\"en\"/>"
+	  "<title>LWS Server Status</title>"
+	  "</head><body><h1>Form results (after urldecoding)</h1>"
+	  "<table><tr><td>Name</td><td>Length</td><td>Value</td></tr>");
+
+	for (n = 0; n < (int)LWS_ARRAY_SIZE(param_names); n++) {
+		if (!lws_spa_get_string(pss->spa, n))
+			p += lws_snprintf((char *)p, end - p,
+			    "<tr><td><b>%s</b></td><td>0"
+			    "</td><td>NULL</td></tr>",
+			    param_names[n]);
+		else
+			p += lws_snprintf((char *)p, end - p,
+			    "<tr><td><b>%s</b></td><td>%d"
+			    "</td><td>%s</td></tr>",
+			    param_names[n],
+			    lws_spa_get_length(pss->spa, n),
+			    lws_spa_get_string(pss->spa, n));
+	}
+
+	p += lws_snprintf((char *)p, end - p,
+			"</table><br><b>filename:</b> %s, "
+			"<b>length</b> %ld",
+			pss->filename, pss->file_length);
+
+	p += lws_snprintf((char *)p, end - p, "</body></html>");
+
+	return (int)lws_ptr_diff(p, start);
+}
+
 static int
 callback_post_demo(struct lws *wsi, enum lws_callback_reasons reason,
 		   void *user, void *in, size_t len)
 {
 	struct per_session_data__post_demo *pss =
 			(struct per_session_data__post_demo *)user;
-	unsigned char *buffer;
 	unsigned char *p, *start, *end;
 	int n;
 
@@ -121,7 +173,7 @@ callback_post_demo(struct lws *wsi, enum lws_callback_reasons reason,
 		/* create the POST argument parser if not already existing */
 		if (!pss->spa) {
 			pss->spa = lws_spa_create(wsi, param_names,
-					ARRAY_SIZE(param_names), 1024,
+					LWS_ARRAY_SIZE(param_names), 1024,
 					file_upload_cb, pss);
 			if (!pss->spa)
 				return -1;
@@ -131,67 +183,67 @@ callback_post_demo(struct lws *wsi, enum lws_callback_reasons reason,
 		}
 
 		/* let it parse the POST data */
-		if (lws_spa_process(pss->spa, in, len))
+		if (lws_spa_process(pss->spa, in, (int)len))
 			return -1;
 		break;
 
 	case LWS_CALLBACK_HTTP_BODY_COMPLETION:
-		lwsl_debug("LWS_CALLBACK_HTTP_BODY_COMPLETION\n");
+		lwsl_debug("LWS_CALLBACK_HTTP_BODY_COMPLETION: %p\n", wsi);
 		/* call to inform no more payload data coming */
 		lws_spa_finalize(pss->spa);
 
-		p = (unsigned char *)pss->result + LWS_PRE;
-		end = p + sizeof(pss->result) - LWS_PRE - 1;
-		p += sprintf((char *)p,
-			"<html><body><h1>Form results (after urldecoding)</h1>"
-			"<table><tr><td>Name</td><td>Length</td><td>Value</td></tr>");
-
-		for (n = 0; n < ARRAY_SIZE(param_names); n++)
-			p += lws_snprintf((char *)p, end - p,
-				    "<tr><td><b>%s</b></td><td>%d</td><td>%s</td></tr>",
-				    param_names[n],
-				    lws_spa_get_length(pss->spa, n),
-				    lws_spa_get_string(pss->spa, n));
-
-		p += lws_snprintf((char *)p, end - p, "</table><br><b>filename:</b> %s, <b>length</b> %ld",
-				pss->filename, pss->file_length);
-
-		p += lws_snprintf((char *)p, end - p, "</body></html>");
-		pss->result_len = p - (unsigned char *)(pss->result + LWS_PRE);
-
-		n = LWS_PRE + 1024;
-		buffer = malloc(n);
-		p = buffer + LWS_PRE;
-		start = p;
-		end = p + n - LWS_PRE - 1;
-
-		if (lws_add_http_header_status(wsi, HTTP_STATUS_OK, &p, end))
-			goto bail;
-
-		if (lws_add_http_header_by_token(wsi, WSI_TOKEN_HTTP_CONTENT_TYPE,
-				(unsigned char *)"text/html", 9, &p, end))
-			goto bail;
-		if (lws_add_http_header_content_length(wsi, pss->result_len, &p, end))
-			goto bail;
-		if (lws_finalize_http_header(wsi, &p, end))
-			goto bail;
-
-		n = lws_write(wsi, start, p - start, LWS_WRITE_HTTP_HEADERS);
-		if (n < 0)
-			goto bail;
-		free(buffer);
-
+		pss->completed = 1;
 		lws_callback_on_writable(wsi);
 		break;
 
 	case LWS_CALLBACK_HTTP_WRITEABLE:
-		lwsl_debug("LWS_CALLBACK_HTTP_WRITEABLE: sending %d\n",
-			   pss->result_len);
-		n = lws_write(wsi, (unsigned char *)pss->result + LWS_PRE,
-			      pss->result_len, LWS_WRITE_HTTP);
-		if (n < 0)
-			return 1;
-		goto try_to_reuse;
+		if (!pss->completed)
+			break;
+
+		p = (unsigned char *)pss->result + LWS_PRE;
+		start = p;
+		end = p + sizeof(pss->result) - LWS_PRE - 1;
+
+		if (!pss->sent_headers) {
+			n = format_result(pss);
+
+			if (lws_add_http_header_status(wsi, HTTP_STATUS_OK,
+						       &p, end))
+				goto bail;
+
+			if (lws_add_http_header_by_token(wsi,
+					WSI_TOKEN_HTTP_CONTENT_TYPE,
+					(unsigned char *)"text/html", 9,
+					&p, end))
+				goto bail;
+			if (lws_add_http_header_content_length(wsi, n, &p, end))
+				goto bail;
+			if (lws_finalize_http_header(wsi, &p, end))
+				goto bail;
+
+			/* first send the headers ... */
+			n = lws_write(wsi, start, lws_ptr_diff(p, start),
+				      LWS_WRITE_HTTP_HEADERS);
+			if (n < 0)
+				goto bail;
+
+			pss->sent_headers = 1;
+			lws_callback_on_writable(wsi);
+			break;
+		}
+
+		if (!pss->sent_body) {
+			n = format_result(pss);
+
+			n = lws_write(wsi, (unsigned char *)start, n,
+				      LWS_WRITE_HTTP_FINAL);
+
+			pss->sent_body = 1;
+			if (n < 0)
+				return 1;
+			goto try_to_reuse;
+		}
+		break;
 
 	case LWS_CALLBACK_HTTP_DROP_PROTOCOL:
 		/* called when our wsi user_space is going to be destroyed */
@@ -208,7 +260,6 @@ callback_post_demo(struct lws *wsi, enum lws_callback_reasons reason,
 	return 0;
 
 bail:
-	free(buffer);
 
 	return 1;
 
@@ -225,6 +276,7 @@ try_to_reuse:
 		callback_post_demo, \
 		sizeof(struct per_session_data__post_demo), \
 		1024, \
+		0, NULL, 0 \
 	}
 
 #if !defined (LWS_PLUGIN_STATIC)
@@ -244,7 +296,7 @@ init_protocol_post_demo(struct lws_context *context,
 	}
 
 	c->protocols = protocols;
-	c->count_protocols = ARRAY_SIZE(protocols);
+	c->count_protocols = LWS_ARRAY_SIZE(protocols);
 	c->extensions = NULL;
 	c->count_extensions = 0;
 

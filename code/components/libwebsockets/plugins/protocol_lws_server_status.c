@@ -20,9 +20,12 @@
 
 #define LWS_DLL
 #define LWS_INTERNAL
-#include "../lib/libwebsockets.h"
+#include <libwebsockets.h>
 #include <string.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 struct lws_ss_load_sample {
 	time_t t;
@@ -49,10 +52,10 @@ struct per_session_data__server_status {
 };
 
 struct per_vhost_data__lws_server_status {
-	uv_timer_t timeout_watcher;
 	struct lws_context *context;
 	int hide_vhosts;
 	int tow_flag;
+	int period_us;
 	struct lws_ss_dumps d;
 	struct lws_ss_filepath *fp;
 };
@@ -60,15 +63,8 @@ struct per_vhost_data__lws_server_status {
 static const struct lws_protocols protocols[1];
 
 static void
-uv_timeout_cb_server_status(uv_timer_t *w
-#if UV_VERSION_MAJOR == 0
-		, int status
-#endif
-)
+update(struct per_vhost_data__lws_server_status *v)
 {
-	struct per_vhost_data__lws_server_status *v = lws_container_of(w,
-			struct per_vhost_data__lws_server_status,
-			timeout_watcher);
 	struct lws_ss_filepath *fp;
 	char *p = v->d.buf + LWS_PRE, contents[256], pure[256];
 	int n, l, first = 1, fd;
@@ -94,15 +90,16 @@ uv_timeout_cb_server_status(uv_timer_t *w
 			p += n;
 			l -= n;
 		}
-		fd = open(fp->filepath, LWS_O_RDONLY);
+		fd = lws_open(fp->filepath, LWS_O_RDONLY);
 		if (fd >= 0) {
 			n = read(fd, contents, sizeof(contents) - 1);
 			if (n >= 0) {
 				contents[n] = '\0';
 				lws_json_purify(pure, contents, sizeof(pure));
 
-				n = lws_snprintf(p, l, "{\"path\":\"%s\",\"val\":\"%s\"}",
-						 fp->filepath, pure);
+				n = lws_snprintf(p, l,
+					"{\"path\":\"%s\",\"val\":\"%s\"}",
+						fp->filepath, pure);
 				p += n;
 				l -= n;
 				first = 0;
@@ -131,12 +128,13 @@ callback_lws_server_status(struct lws *wsi, enum lws_callback_reasons reason,
 			lws_protocol_vh_priv_get(lws_get_vhost(wsi),
 					lws_get_protocol(wsi));
 	struct lws_ss_filepath *fp, *fp1, **fp_old;
-	int m, period = 1000;
+	int m;
 
 	switch (reason) {
 
 	case LWS_CALLBACK_ESTABLISHED:
 		lwsl_info("%s: LWS_CALLBACK_ESTABLISHED\n", __func__);
+		lws_set_timer_usecs(wsi, v->period_us);
 		lws_callback_on_writable(wsi);
 		break;
 
@@ -157,28 +155,27 @@ callback_lws_server_status(struct lws *wsi, enum lws_callback_reasons reason,
 			if (!strcmp(pvo->name, "hide-vhosts"))
 				v->hide_vhosts = atoi(pvo->value);
 			if (!strcmp(pvo->name, "update-ms"))
-				period = atoi(pvo->value);
+				v->period_us = atoi(pvo->value) * 1000;
+			else
+				v->period_us = 5 * 1000 * 1000;
 			if (!strcmp(pvo->name, "filepath")) {
 				fp = malloc(sizeof(*fp));
 				fp->next = NULL;
-				lws_snprintf(&fp->filepath[0], sizeof(fp->filepath), "%s", pvo->value);
+				lws_snprintf(&fp->filepath[0],
+					     sizeof(fp->filepath), "%s",
+					     pvo->value);
 				*fp_old = fp;
 				fp_old = &fp->next;
 			}
 			pvo = pvo->next;
 		}
 		v->context = lws_get_context(wsi);
-		uv_timer_init(lws_uv_getloop(v->context, 0), &v->timeout_watcher);
-		uv_timer_start(&v->timeout_watcher,
-				uv_timeout_cb_server_status, 2000, period);
+
 		break;
 
 	case LWS_CALLBACK_PROTOCOL_DESTROY: /* per vhost */
-	//	lwsl_notice("ss: LWS_CALLBACK_PROTOCOL_DESTROY: v=%p, ctx=%p\n", v, v->context);
 		if (!v)
 			break;
-		uv_timer_stop(&v->timeout_watcher);
-		uv_close((uv_handle_t *)&v->timeout_watcher, NULL);
 		fp = v->fp;
 		while (fp) {
 			fp1= fp->next;
@@ -192,6 +189,12 @@ callback_lws_server_status(struct lws *wsi, enum lws_callback_reasons reason,
 			      v->d.length, LWS_WRITE_TEXT);
 		if (m < 0)
 			return -1;
+		break;
+
+	case LWS_CALLBACK_TIMER:
+		lws_set_timer_usecs(wsi, v->period_us);
+		update(v);
+		lws_callback_on_writable(wsi);
 		break;
 
 	default:
@@ -212,7 +215,7 @@ static const struct lws_protocols protocols[] = {
 
 LWS_EXTERN LWS_VISIBLE int
 init_protocol_lws_server_status(struct lws_context *context,
-			     struct lws_plugin_capability *c)
+				struct lws_plugin_capability *c)
 {
 	if (c->api_magic != LWS_PLUGIN_API_MAGIC) {
 		lwsl_err("Plugin API %d, library API %d",
@@ -221,7 +224,7 @@ init_protocol_lws_server_status(struct lws_context *context,
 	}
 
 	c->protocols = protocols;
-	c->count_protocols = ARRAY_SIZE(protocols);
+	c->count_protocols = LWS_ARRAY_SIZE(protocols);
 	c->extensions = NULL;
 	c->count_extensions = 0;
 
@@ -233,4 +236,3 @@ destroy_protocol_lws_server_status(struct lws_context *context)
 {
 	return 0;
 }
-

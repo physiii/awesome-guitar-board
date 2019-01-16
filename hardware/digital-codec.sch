@@ -1,10 +1,10 @@
 EESchema Schematic File Version 4
 LIBS:awesome-guitar-board-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 5
+Sheet 4 5
 Title ""
 Date ""
 Rev ""
@@ -27,7 +27,7 @@ Wire Wire Line
 Wire Wire Line
 	5950 4800 5950 4875
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B4DCFCE
 P 5950 4875
 F 0 "#PWR?" H 5950 4625 50  0001 C CNN
@@ -66,7 +66,7 @@ Wire Wire Line
 	5850 4200 6150 4200
 Connection ~ 6150 4200
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B32BE2E
 P 7400 4700
 F 0 "#PWR?" H 7400 4450 50  0001 C CNN
@@ -77,7 +77,7 @@ F 3 "" H 7400 4700 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:C_1uF C?
+L awesome-guitar-board-rescue:C_1uF-open-automation C?
 U 1 1 5B33DF15
 P 6200 2450
 F 0 "C?" V 6150 2350 50  0000 C CNN
@@ -91,7 +91,7 @@ $EndComp
 Wire Wire Line
 	6350 2450 6350 2550
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B3506D8
 P 6350 2550
 F 0 "#PWR?" H 6350 2300 50  0001 C CNN
@@ -106,7 +106,7 @@ Wire Wire Line
 Wire Wire Line
 	5950 2225 6050 2225
 $Comp
-L open-automation:C_2.2uF C?
+L awesome-guitar-board-rescue:C_2.2uF-open-automation C?
 U 1 1 5B379721
 P 6200 2225
 F 0 "C?" V 5948 2225 50  0000 C CNN
@@ -122,7 +122,7 @@ Wire Wire Line
 Wire Wire Line
 	6500 2225 6500 2550
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B383127
 P 6500 2550
 F 0 "#PWR?" H 6500 2300 50  0001 C CNN
@@ -139,7 +139,7 @@ Wire Wire Line
 Wire Wire Line
 	6250 4925 6250 5050
 $Comp
-L open-automation:C_1uF C?
+L awesome-guitar-board-rescue:C_1uF-open-automation C?
 U 1 1 5B3A070A
 P 6400 5050
 F 0 "C?" V 6375 5150 50  0000 C CNN
@@ -159,7 +159,7 @@ Wire Wire Line
 Wire Wire Line
 	6850 4350 7175 4350
 $Comp
-L open-automation:C_1uF C?
+L awesome-guitar-board-rescue:C_1uF-open-automation C?
 U 1 1 5B3CA38C
 P 7175 4500
 F 0 "C?" H 7290 4546 50  0000 L CNN
@@ -171,7 +171,7 @@ F 4 "CGA3E1X7R1C105M080AC" H 7300 4700 60  0001 C CNN "Part Number"
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:C_1uF C?
+L awesome-guitar-board-rescue:C_1uF-open-automation C?
 U 1 1 5B3CA4B2
 P 7400 4500
 F 0 "C?" H 7515 4546 50  0000 L CNN
@@ -193,7 +193,7 @@ Wire Wire Line
 Wire Wire Line
 	7025 4450 7025 4700
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B3F4549
 P 7175 4700
 F 0 "#PWR?" H 7175 4450 50  0001 C CNN
@@ -204,7 +204,7 @@ F 3 "" H 7175 4700 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B435564
 P 5025 2400
 F 0 "#PWR?" H 5025 2150 50  0001 C CNN
@@ -215,7 +215,7 @@ F 3 "" H 5025 2400 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:C_0.1uF C?
+L awesome-guitar-board-rescue:C_0.1uF-open-automation C?
 U 1 1 5B441011
 P 5175 2600
 F 0 "C?" V 5150 2675 50  0000 C CNN
@@ -236,7 +236,7 @@ Wire Wire Line
 	5350 2600 5350 2525
 Connection ~ 5350 2600
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B46E7FE
 P 5025 2675
 F 0 "#PWR?" H 5025 2425 50  0001 C CNN
@@ -256,7 +256,7 @@ Wire Wire Line
 	5550 2350 5550 2325
 Connection ~ 5550 2350
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B3FED41
 P 7025 4700
 F 0 "#PWR?" H 7025 4450 50  0001 C CNN
@@ -272,7 +272,7 @@ Wire Wire Line
 	6050 2875 6050 2850
 Connection ~ 6050 2850
 $Comp
-L Amplifier_Audio:MAX98089 U?
+L awesome-guitar-board-rescue:MAX98089-Amplifier_Audio U?
 U 1 1 5B46AEA2
 P 5850 3500
 F 0 "U?" H 5000 4100 50  0000 L CNN
@@ -297,7 +297,7 @@ Wire Wire Line
 Wire Wire Line
 	5550 4800 5550 5250
 $Comp
-L open-automation:+5V #PWR?
+L awesome-guitar-board-rescue:+5V-open-automation #PWR?
 U 1 1 5B3E6C14
 P 5750 5675
 F 0 "#PWR?" H 5750 5525 50  0001 C CNN
@@ -322,7 +322,7 @@ Wire Wire Line
 Wire Wire Line
 	5300 5250 5550 5250
 $Comp
-L open-automation:C_1uF C?
+L awesome-guitar-board-rescue:C_1uF-open-automation C?
 U 1 1 5B414A02
 P 5150 5250
 F 0 "C?" V 5125 5350 50  0000 C CNN
@@ -334,7 +334,7 @@ F 4 "CGA3E1X7R1C105M080AC" H 5275 5450 60  0001 C CNN "Part Number"
 	0    1    1    0   
 $EndComp
 $Comp
-L open-automation:C_1uF C?
+L awesome-guitar-board-rescue:C_1uF-open-automation C?
 U 1 1 5B420336
 P 5975 5250
 F 0 "C?" V 5950 5350 50  0000 C CNN
@@ -350,7 +350,7 @@ Wire Wire Line
 Wire Wire Line
 	5000 5250 5000 5325
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B45ADC6
 P 6125 5325
 F 0 "#PWR?" H 6125 5075 50  0001 C CNN
@@ -361,7 +361,7 @@ F 3 "" H 6125 5325 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B45AE7E
 P 5000 5325
 F 0 "#PWR?" H 5000 5075 50  0001 C CNN
@@ -386,7 +386,7 @@ Wire Wire Line
 	5750 5700 5750 5675
 Connection ~ 5600 5500
 $Comp
-L open-automation:C_10uF C?
+L awesome-guitar-board-rescue:C_10uF-open-automation C?
 U 1 1 5B48C588
 P 5900 5500
 F 0 "C?" V 5648 5500 50  0000 C CNN
@@ -400,7 +400,7 @@ $EndComp
 Wire Wire Line
 	6050 5500 6050 5575
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B4996F5
 P 6050 5575
 F 0 "#PWR?" H 6050 5325 50  0001 C CNN
@@ -415,7 +415,7 @@ Wire Wire Line
 Wire Wire Line
 	3925 3800 4000 3800
 $Comp
-L open-automation:C_0.1uF C?
+L awesome-guitar-board-rescue:C_0.1uF-open-automation C?
 U 1 1 5B4C0634
 P 4000 3975
 F 0 "C?" H 4025 4050 50  0000 L CNN
@@ -432,7 +432,7 @@ Connection ~ 4000 3800
 Wire Wire Line
 	4000 4150 4000 4125
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B4DABD9
 P 4000 4150
 F 0 "#PWR?" H 4000 3900 50  0001 C CNN
@@ -447,7 +447,7 @@ Wire Wire Line
 Wire Wire Line
 	4775 2750 4775 2850
 $Comp
-L open-automation:R_10k R?
+L awesome-guitar-board-rescue:R_10k-open-automation R?
 U 1 1 5B53C323
 P 4775 2600
 F 0 "R?" H 4845 2646 50  0000 L CNN
@@ -461,7 +461,7 @@ $EndComp
 Wire Wire Line
 	4775 2450 4775 2350
 $Comp
-L open-automation:C_1uF C?
+L awesome-guitar-board-rescue:C_1uF-open-automation C?
 U 1 1 5B5934BC
 P 5175 2350
 F 0 "C?" V 4923 2350 50  0000 C CNN
@@ -475,7 +475,7 @@ $EndComp
 Wire Wire Line
 	5850 2850 5850 2000
 $Comp
-L open-automation:C_1uF C?
+L awesome-guitar-board-rescue:C_1uF-open-automation C?
 U 1 1 5B5E98B2
 P 6200 2000
 F 0 "C?" V 6250 1900 50  0000 C CNN
@@ -505,7 +505,7 @@ Wire Wire Line
 Wire Wire Line
 	6675 2000 6675 2550
 $Comp
-L open-automation:GND #PWR?
+L awesome-guitar-board-rescue:GND-open-automation #PWR?
 U 1 1 5B6FB0D8
 P 6675 2550
 F 0 "#PWR?" H 6675 2300 50  0001 C CNN
@@ -530,4 +530,16 @@ Text HLabel 3925 3775 1    60   Input ~ 0
 3v3
 Text HLabel 5350 2525 1    60   Input ~ 0
 3v3
+$Comp
+L open-automation:MAX98091 U?
+U 1 1 5C3C0959
+P 1700 3850
+F 0 "U?" H 2550 3050 50  0000 L CNN
+F 1 "MAX98091" V 1700 3650 50  0000 L CNN
+F 2 "Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.3x4.3mm_ThermalVias" H 1700 3850 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/maxim-integrated/MAX98091ETM/MAX98091ETM-ND/5049990" H 1700 3850 50  0001 C CNN
+F 4 "MAX98091ETM+" H 1700 3850 50  0001 C CNN "Part Number"
+	1    1700 3850
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC

@@ -21,7 +21,7 @@
 
 #define LWS_DLL
 #define LWS_INTERNAL
-#include "../lib/libwebsockets.h"
+#include <libwebsockets.h>
 
 #include <sqlite3.h>
 #include <string.h>
@@ -94,8 +94,10 @@ struct per_session_data__gs {
 	char ip[46];
 	struct lws_process_html_state phs;
 	int spos;
+	char check_response_value;
 
 	unsigned int logging_out:1;
+	unsigned int check_response:1;
 };
 
 /* utils.c */

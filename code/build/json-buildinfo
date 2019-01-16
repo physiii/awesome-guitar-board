@@ -1,0 +1,12 @@
+{
+ "schema": "lws1",
+ "model": "lws",
+ "builder": "office",
+ "app": "liger",
+ "user": "andy",
+ "git": "cbdb2d7e-dirty",
+ "date": "Mon Dec 31 20:32:26 CST 2018",
+ "unixtime": "1546309946",
+ "file": "liger-1546309946.bin",
+ "factory": "0"
+}

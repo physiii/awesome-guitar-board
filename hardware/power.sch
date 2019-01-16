@@ -1,6 +1,6 @@
 EESchema Schematic File Version 4
 LIBS:awesome-guitar-board-cache
-EELAYER 26 0
+EELAYER 29 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
@@ -14,488 +14,572 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Label 4750 1400 0    394  ~ 0
-Power
+Text HLabel 7100 4650 2    50   Input ~ 0
+POWER_EN
 $Comp
-L power:GND #PWR?
-U 1 1 59CD90F5
-P 7950 4400
-F 0 "#PWR?" H 7950 4150 50  0001 C CNN
-F 1 "GND" H 7950 4250 50  0000 C CNN
-F 2 "" H 7950 4400 50  0000 C CNN
-F 3 "" H 7950 4400 50  0000 C CNN
-	1    7950 4400
-	1    0    0    -1  
-$EndComp
-Text GLabel 8150 3950 2    60   Input ~ 0
-3V3
-$Comp
-L power:GND #PWR?
-U 1 1 59CD90F6
-P 7000 4100
-F 0 "#PWR?" H 7000 3850 50  0001 C CNN
-F 1 "GND" H 7000 3950 50  0000 C CNN
-F 2 "" H 7000 4100 50  0000 C CNN
-F 3 "" H 7000 4100 50  0000 C CNN
-	1    7000 4100
-	1    0    0    -1  
+L awesome-guitar-board-rescue:C_10uF-open-automation C?
+U 1 1 5C328885
+P 6900 4850
+F 0 "C?" H 6900 4750 50  0000 R CNN
+F 1 "C_10uF" H 6900 4950 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 7000 5150 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL10A106MP8NNNC/1276-1871-1-ND/3889957" H 6900 4600 50  0001 C CNN
+F 4 "CL10A106MP8NNNC" H 7025 5050 60  0001 C CNN "Part Number"
+	1    6900 4850
+	-1   0    0    1   
 $EndComp
 $Comp
-L power:GND #PWR?
-U 1 1 59CD90F7
-P 6750 4250
-F 0 "#PWR?" H 6750 4000 50  0001 C CNN
-F 1 "GND" H 6750 4100 50  0000 C CNN
-F 2 "" H 6750 4250 50  0000 C CNN
-F 3 "" H 6750 4250 50  0000 C CNN
-	1    6750 4250
-	1    0    0    -1  
+L awesome-guitar-board-rescue:R_10k-open-automation R?
+U 1 1 5C328F20
+P 6700 4850
+F 0 "R?" V 6700 4900 50  0000 R CNN
+F 1 "R_10k" V 6800 4950 50  0000 R CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 6630 4850 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-0710KL/311-10KGRCT-ND/729647" V 6780 4850 50  0001 C CNN
+F 4 "MCT06030C1002FP500" V 6880 4950 60  0001 C CNN "Part Number"
+	1    6700 4850
+	-1   0    0    1   
 $EndComp
-Text Label 4750 1400 0    394  ~ 0
-Power
 $Comp
 L power:GND #PWR?
-U 1 1 59CD90FA
-P 3900 4200
-F 0 "#PWR?" H 3900 3950 50  0001 C CNN
-F 1 "GND" H 3900 4050 50  0000 C CNN
-F 2 "" H 3900 4200 50  0000 C CNN
-F 3 "" H 3900 4200 50  0000 C CNN
-	1    3900 4200
+U 1 1 5C32937A
+P 6800 5050
+F 0 "#PWR?" H 6800 4800 50  0001 C CNN
+F 1 "GND" H 6800 4900 50  0000 C CNN
+F 2 "" H 6800 5050 50  0000 C CNN
+F 3 "" H 6800 5050 50  0000 C CNN
+	1    6800 5050
 	1    0    0    -1  
 $EndComp
-Text GLabel 4050 3500 1    60   Input ~ 0
-BATTERY
+Wire Wire Line
+	6700 5000 6700 5050
+Wire Wire Line
+	6700 5050 6800 5050
+Wire Wire Line
+	6800 5050 6900 5050
+Wire Wire Line
+	6900 5050 6900 5000
+Connection ~ 6800 5050
+Wire Wire Line
+	6900 4700 6900 4650
+Wire Wire Line
+	6900 4650 7100 4650
+Wire Wire Line
+	6700 4700 6700 4650
+Wire Wire Line
+	6700 4650 6900 4650
+Connection ~ 6900 4650
+$Comp
+L Transistor_BJT:2N3904 Q?
+U 1 1 5C3302AA
+P 6600 4400
+F 0 "Q?" H 6750 4500 50  0000 L CNN
+F 1 "2N3904" H 6750 4300 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 6800 4325 50  0001 L CIN
+F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3904.pdf" H 6600 4400 50  0001 L CNN
+	1    6600 4400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6700 4600 6700 4650
+Connection ~ 6700 4650
+$Comp
+L awesome-guitar-board-rescue:C_10uF-open-automation C?
+U 1 1 5C33499E
+P 6350 4600
+F 0 "C?" H 6550 4600 50  0000 R CNN
+F 1 "C_10uF" H 6650 4700 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 6450 4900 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL10A106MP8NNNC/1276-1871-1-ND/3889957" H 6350 4350 50  0001 C CNN
+F 4 "CL10A106MP8NNNC" H 6475 4800 60  0001 C CNN "Part Number"
+	1    6350 4600
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	6350 4450 6350 4400
+Wire Wire Line
+	6350 4400 6400 4400
 $Comp
 L power:GND #PWR?
-U 1 1 59CD90FC
-P 4200 4200
-F 0 "#PWR?" H 4200 3950 50  0001 C CNN
-F 1 "GND" H 4200 4050 50  0000 C CNN
-F 2 "" H 4200 4200 50  0000 C CNN
-F 3 "" H 4200 4200 50  0000 C CNN
-	1    4200 4200
+U 1 1 5C3376BA
+P 6350 4800
+F 0 "#PWR?" H 6350 4550 50  0001 C CNN
+F 1 "GND" H 6350 4650 50  0000 C CNN
+F 2 "" H 6350 4800 50  0000 C CNN
+F 3 "" H 6350 4800 50  0000 C CNN
+	1    6350 4800
 	1    0    0    -1  
 $EndComp
-Text GLabel 2700 3400 1    60   Input ~ 0
-USB
-Text GLabel 4950 3400 1    60   Input ~ 0
-USB
+Wire Wire Line
+	6350 4800 6350 4750
+$Comp
+L awesome-guitar-board-rescue:R_1M-open-automation-awesome-guitar-board-rescue R_1k?
+U 1 1 5C339A88
+P 5700 4100
+F 0 "R_1k?" H 5770 4146 50  0000 L CNN
+F 1 "R_1M" H 5770 4055 50  0000 L CNN
+F 2 "Resistors_SMD:R_0603" V 5630 4100 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624" V 5780 4100 50  0001 C CNN
+F 4 "RC0603JR-071KL" V 5880 4200 60  0001 C CNN "Part Number"
+	1    5700 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:2N3904 Q?
+U 1 1 5C33BCE1
+P 5600 4800
+F 0 "Q?" H 5750 4900 50  0000 L CNN
+F 1 "2N3904" H 5400 4650 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 5800 4725 50  0001 L CIN
+F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3904.pdf" H 5600 4800 50  0001 L CNN
+	1    5600 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Transistor_BJT:2N3904 Q?
+U 1 1 5C33C96D
+P 5150 4150
+F 0 "Q?" H 5300 4200 50  0000 L CNN
+F 1 "2N3904" H 4950 4000 50  0000 L CNN
+F 2 "Package_TO_SOT_THT:TO-92_Inline" H 5350 4075 50  0001 L CIN
+F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3904.pdf" H 5150 4150 50  0001 L CNN
+	1    5150 4150
+	1    0    0    -1  
+$EndComp
+$Comp
+L awesome-guitar-board-rescue:R_1M-open-automation-awesome-guitar-board-rescue R_1k?
+U 1 1 5C33CE1D
+P 5250 4600
+F 0 "R_1k?" V 5250 4500 50  0000 L CNN
+F 1 "R_1M" V 5350 4500 50  0000 L CNN
+F 2 "Resistors_SMD:R_0603" V 5180 4600 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624" V 5330 4600 50  0001 C CNN
+F 4 "RC0603JR-071KL" V 5430 4700 60  0001 C CNN "Part Number"
+	1    5250 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5700 3950 5700 3900
+Wire Wire Line
+	5700 3900 5250 3900
+Wire Wire Line
+	5250 3900 5250 3950
+Text HLabel 5200 3900 0    50   Input ~ 0
+V_IN
+Wire Wire Line
+	5200 3900 5250 3900
+Connection ~ 5250 3900
+Wire Wire Line
+	5400 4800 5250 4800
+Wire Wire Line
+	5250 4800 5250 4750
+Wire Wire Line
+	4950 4050 5550 4050
+Wire Wire Line
+	4950 4150 4950 4050
+Wire Wire Line
+	5550 4050 5550 4300
+Wire Wire Line
+	5700 4300 5700 4250
+Connection ~ 5700 4300
+Wire Wire Line
+	5550 4300 5700 4300
+Wire Wire Line
+	5700 4300 5700 4600
 $Comp
 L power:GND #PWR?
-U 1 1 59CD90FE
-P 4950 4200
-F 0 "#PWR?" H 4950 3950 50  0001 C CNN
-F 1 "GND" H 4950 4050 50  0000 C CNN
-F 2 "" H 4950 4200 50  0000 C CNN
-F 3 "" H 4950 4200 50  0000 C CNN
-	1    4950 4200
+U 1 1 5C35E1C5
+P 5700 5050
+F 0 "#PWR?" H 5700 4800 50  0001 C CNN
+F 1 "GND" H 5700 4900 50  0000 C CNN
+F 2 "" H 5700 5050 50  0000 C CNN
+F 3 "" H 5700 5050 50  0000 C CNN
+	1    5700 5050
 	1    0    0    -1  
 $EndComp
-Text GLabel 4600 3500 1    60   Input ~ 0
-BATTERY
-Text GLabel 4600 4200 3    60   Input ~ 0
-USB
-Text GLabel 6600 3850 0    60   Input ~ 0
-V_USB
 Wire Wire Line
-	7950 4400 7950 4350
-Wire Wire Line
-	7000 4100 7000 4050
-Wire Wire Line
-	7000 4050 7050 4050
-Wire Wire Line
-	6750 3900 6750 3850
-Wire Wire Line
-	6600 3850 6750 3850
-Wire Wire Line
-	6750 4250 6750 4200
-Connection ~ 6750 3850
-Wire Wire Line
-	3700 3900 3750 3900
-Wire Wire Line
-	3750 3900 3750 4150
-Wire Wire Line
-	2650 3900 2750 3900
-Wire Wire Line
-	3700 3700 4050 3700
-Wire Wire Line
-	4050 3500 4050 3700
-Wire Wire Line
-	2750 3700 2700 3700
-Wire Wire Line
-	2350 3700 2300 3700
-Wire Wire Line
-	2300 3700 2300 3750
-Wire Wire Line
-	2300 4050 2650 4050
-Wire Wire Line
-	2650 4050 2650 3900
-Wire Wire Line
-	2700 3400 2700 3700
-Connection ~ 2700 3700
-Wire Wire Line
-	4950 3400 4950 3800
-Wire Wire Line
-	4950 3800 4900 3800
-Connection ~ 4950 3800
-Wire Wire Line
-	4950 4200 4950 4150
-Wire Wire Line
-	4600 3500 4600 3600
-Wire Wire Line
-	4600 4000 4600 4200
-Connection ~ 4050 3700
-Wire Wire Line
-	3900 4100 3900 4150
-Wire Wire Line
-	3750 4150 3900 4150
-Connection ~ 3900 4150
-Wire Wire Line
-	3700 3800 3900 3800
-Wire Wire Line
-	7800 3950 7950 3950
-Connection ~ 7950 3950
-Wire Wire Line
-	7950 4050 7950 3950
-Wire Wire Line
-	4200 3700 4200 3800
-Wire Wire Line
-	4200 4100 4200 4200
+	5700 5050 5700 5000
 $Comp
-L power:GND #PWR?
-U 1 1 59CEB7E0
-P 3950 6800
-F 0 "#PWR?" H 3950 6550 50  0001 C CNN
-F 1 "GND" H 3950 6650 50  0000 C CNN
-F 2 "" H 3950 6800 50  0000 C CNN
-F 3 "" H 3950 6800 50  0000 C CNN
-	1    3950 6800
-	1    0    0    -1  
+L awesome-guitar-board-rescue:R_10k-open-automation R?
+U 1 1 5C3613A9
+P 4950 4800
+F 0 "R?" V 4950 4800 50  0000 C CNN
+F 1 "R_10k" V 5050 4800 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 4880 4800 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-0710KL/311-10KGRCT-ND/729647" V 5030 4800 50  0001 C CNN
+F 4 "MCT06030C1002FP500" V 5130 4900 60  0001 C CNN "Part Number"
+	1    4950 4800
+	0    1    1    0   
 $EndComp
-Text GLabel 2875 6500 0    60   Input ~ 0
+$Comp
+L awesome-guitar-board-rescue:C_0.1uF-open-automation C?
+U 1 1 5C366965
+P 4600 4800
+F 0 "C?" V 4650 4700 50  0000 C CNN
+F 1 "C_0.1uF" V 4750 4800 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 4700 5100 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/tdk-corporation/C1608X8R1H104K080AB/445-8818-1-ND/3248223" H 4600 4550 50  0001 C CNN
+F 4 "CL10F104ZO8NNNC" H 4725 5000 60  0001 C CNN "Part Number"
+	1    4600 4800
+	0    1    1    0   
+$EndComp
+Text HLabel 4400 4800 0    50   Input ~ 0
 GUITAR_OUT
 Wire Wire Line
-	2875 6500 2950 6500
+	4400 4800 4450 4800
 Wire Wire Line
-	3300 6500 3250 6500
+	4750 4800 4800 4800
 Wire Wire Line
-	3650 6500 3625 6500
+	5100 4800 5250 4800
+Connection ~ 5250 4800
 Wire Wire Line
-	3950 6700 3950 6800
+	5250 4350 5250 4400
 Wire Wire Line
-	3625 6325 3625 6500
-Connection ~ 3625 6500
+	6350 4400 5250 4400
+Connection ~ 6350 4400
+Connection ~ 5250 4400
 Wire Wire Line
-	3625 5500 3625 5575
+	5250 4400 5250 4450
 Wire Wire Line
-	3625 5975 3625 6000
+	6700 3900 5700 3900
 Wire Wire Line
-	3950 5500 3950 5575
-Wire Wire Line
-	3325 5775 3325 6100
-Wire Wire Line
-	3625 5500 3775 5500
-Wire Wire Line
-	3775 5450 3775 5500
-Connection ~ 3775 5500
-Wire Wire Line
-	3325 6100 3950 6100
-Connection ~ 3625 6000
+	6700 3900 6700 4200
+Connection ~ 5700 3900
 $Comp
 L power:GND #PWR?
-U 1 1 59CED35C
-P 4750 6800
-F 0 "#PWR?" H 4750 6550 50  0001 C CNN
-F 1 "GND" H 4750 6650 50  0000 C CNN
-F 2 "" H 4750 6800 50  0000 C CNN
-F 3 "" H 4750 6800 50  0000 C CNN
-	1    4750 6800
+U 1 1 5909DD67
+P 5175 2875
+F 0 "#PWR?" H 5175 2625 50  0001 C CNN
+F 1 "GND" H 5175 2725 50  0000 C CNN
+F 2 "" H 5175 2875 50  0000 C CNN
+F 3 "" H 5175 2875 50  0000 C CNN
+	1    5175 2875
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	4750 6800 4750 6650
-Wire Wire Line
-	4750 6350 4750 6275
-Wire Wire Line
-	4750 5450 4750 5800
-Text GLabel 4925 6275 2    60   Input ~ 0
-POWER_EN
-Wire Wire Line
-	4925 6275 4750 6275
-Connection ~ 4750 6275
 $Comp
 L power:GND #PWR?
-U 1 1 59CEEBB2
-P 4325 6475
-F 0 "#PWR?" H 4325 6225 50  0001 C CNN
-F 1 "GND" H 4325 6325 50  0000 C CNN
-F 2 "" H 4325 6475 50  0000 C CNN
-F 3 "" H 4325 6475 50  0000 C CNN
-	1    4325 6475
+U 1 1 59A4BAA9
+P 3550 2850
+F 0 "#PWR?" H 3550 2600 50  0001 C CNN
+F 1 "GND" H 3550 2700 50  0000 C CNN
+F 2 "" H 3550 2850 50  0000 C CNN
+F 3 "" H 3550 2850 50  0000 C CNN
+	1    3550 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L awesome-guitar-board-rescue:R_1k-liger-rescue R?
+U 1 1 59B41A3B
+P 6625 2450
+F 0 "R?" V 6705 2450 50  0000 C CNN
+F 1 "R_1k" V 6625 2450 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 6555 2450 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624" V 6705 2450 50  0001 C CNN
+F 4 "ESR03EZPJ102" V 6805 2550 60  0001 C CNN "Part Number"
+	1    6625 2450
+	0    1    1    0   
+$EndComp
+$Comp
+L awesome-guitar-board-rescue:MCP73831T-liger-rescue U?
+U 1 1 59B41D1D
+P 7375 2550
+F 0 "U?" H 7375 2350 60  0000 C CNN
+F 1 "MCP73831T" H 7325 2750 60  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-5_HandSoldering" H 7625 2250 60  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/microchip-technology/MCP73831T-2ACI-OT/MCP73831T-2ACI-OTCT-ND/1979802" H 7875 2150 60  0001 C CNN
+F 4 "MCP73831T-2ACI/OT" H 7325 2850 60  0001 C CNN "Part Number"
+	1    7375 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 59B41D6D
+P 8025 2950
+F 0 "#PWR?" H 8025 2700 50  0001 C CNN
+F 1 "GND" H 8025 2800 50  0000 C CNN
+F 2 "" H 8025 2950 50  0000 C CNN
+F 3 "" H 8025 2950 50  0000 C CNN
+	1    8025 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L awesome-guitar-board-rescue:PMOS-DMG3413L-liger-rescue Q?
+U 1 1 59B57188
+P 3450 2125
+F 0 "Q?" H 3600 2275 50  0000 L CNN
+F 1 "PMOS-DMG3413L" H 3200 1975 50  0001 L CNN
+F 2 "Package_TO_SOT_SMD:SOT-23" H 3650 2050 50  0001 L CIN
+F 3 "https://www.digikey.com/product-detail/en/diodes-incorporated/DMG3413L-7/DMG3413L-7DICT-ND/5218387" H 3650 2200 50  0001 L CNN
+F 4 "DMG3413L-7" H 3750 2300 60  0001 C CNN "Part Number"
+	1    3450 2125
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 59B57C4B
+P 8325 2950
+F 0 "#PWR?" H 8325 2700 50  0001 C CNN
+F 1 "GND" H 8325 2800 50  0000 C CNN
+F 2 "" H 8325 2950 50  0000 C CNN
+F 3 "" H 8325 2950 50  0000 C CNN
+	1    8325 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 59B58DE3
+P 3025 2925
+F 0 "#PWR?" H 3025 2675 50  0001 C CNN
+F 1 "GND" H 3025 2775 50  0000 C CNN
+F 2 "" H 3025 2925 50  0000 C CNN
+F 3 "" H 3025 2925 50  0000 C CNN
+	1    3025 2925
+	1    0    0    -1  
+$EndComp
+$Comp
+L awesome-guitar-board-rescue:R_10k-liger-rescue R?
+U 1 1 59B5A0F4
+P 3025 2700
+F 0 "R?" V 3025 2700 50  0000 C CNN
+F 1 "R_10k" V 2925 2700 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 2955 2700 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-0710KL/311-10KGRCT-ND/729647" V 3105 2700 50  0001 C CNN
+F 4 "MCT06030C1002FP500" V 3205 2800 60  0001 C CNN "Part Number"
+	1    3025 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L awesome-guitar-board-rescue:R_2k-liger-rescue R?
+U 1 1 59B5A181
+P 8025 2700
+F 0 "R?" V 8025 2700 50  0000 C CNN
+F 1 "R_2k" V 7925 2700 50  0000 C CNN
+F 2 "Resistor_SMD:R_0603_1608Metric_Pad1.05x0.95mm_HandSolder" V 7955 2700 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072KL/311-2.0KGRCT-ND/729673" V 8105 2700 50  0001 C CNN
+F 4 "ERA-3AEB202V" V 8205 2800 60  0001 C CNN "Part Number"
+	1    8025 2700
+	-1   0    0    1   
+$EndComp
+$Comp
+L awesome-guitar-board-rescue:18650_Battery_Cell_1043-liger-rescue BT?
+U 1 1 59BA3E14
+P 8325 2750
+AR Path="/59BA3E14" Ref="BT?"  Part="1" 
+AR Path="/5909D8E3/59BA3E14" Ref="BT?"  Part="1" 
+AR Path="/59CD09A4/59BA3E14" Ref="BT?"  Part="1" 
+F 0 "BT?" H 8425 2850 50  0000 L CNN
+F 1 "18650_Battery_Cell_1043" H 8425 2750 50  0001 L CNN
+F 2 "Battery:BatteryHolder_Keystone_1042_1x18650" V 8325 2810 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/keystone-electronics/1043/36-1043-ND/2745669" V 8325 2810 50  0001 C CNN
+F 4 "36-1043-ND" H 8525 2950 60  0001 C CNN "Part Number"
+	1    8325 2750
+	1    0    0    -1  
+$EndComp
+$Comp
+L awesome-guitar-board-rescue:D_Schottky-BAT20JFILM-liger-rescue D?
+U 1 1 59EBB5BE
+P 3250 2450
+F 0 "D?" H 3250 2550 50  0000 C CNN
+F 1 "D_Schottky-BAT20JFILM" H 3250 2350 50  0001 C CNN
+F 2 "Diode_SMD:D_SOD-323_HandSoldering" H 3250 2275 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/stmicroelectronics/BAT20JFILM/497-3381-1-ND/669138" H 3250 2200 50  0001 C CNN
+F 4 "BAT20JFILM" H 3300 2625 60  0001 C CNN "Part Number"
+	1    3250 2450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3550 1800 3550 1925
+Connection ~ 3025 2450
+Wire Wire Line
+	2825 2450 3025 2450
+Wire Wire Line
+	3025 2925 3025 2850
+Wire Wire Line
+	8325 2850 8325 2950
+Wire Wire Line
+	8325 2450 8325 2550
+Wire Wire Line
+	7825 2550 8025 2550
+Connection ~ 8025 2900
+Wire Wire Line
+	7875 2900 8025 2900
+Wire Wire Line
+	8025 2850 8025 2900
+Connection ~ 8175 2450
+Connection ~ 6825 2450
+Wire Wire Line
+	6825 2150 6825 2450
+Wire Wire Line
+	6775 2800 6775 2650
+Wire Wire Line
+	6425 2800 6775 2800
+Wire Wire Line
+	6425 2450 6425 2500
+Wire Wire Line
+	6475 2450 6425 2450
+Wire Wire Line
+	6875 2450 6825 2450
+Wire Wire Line
+	8175 2250 8175 2450
+Wire Wire Line
+	7825 2450 8175 2450
+Wire Wire Line
+	6775 2650 6875 2650
+Wire Wire Line
+	7875 2650 7875 2900
+Wire Wire Line
+	7825 2650 7875 2650
+Connection ~ 3550 2450
+Wire Wire Line
+	3550 2850 3550 2800
+Wire Wire Line
+	3400 2450 3550 2450
+Wire Wire Line
+	3550 2325 3550 2450
+Wire Wire Line
+	5175 2875 5175 2825
+Wire Wire Line
+	8750 2450 8750 2550
+Connection ~ 8325 2450
+$Comp
+L power:GND #PWR?
+U 1 1 59EBD5C7
+P 8750 2950
+F 0 "#PWR?" H 8750 2700 50  0001 C CNN
+F 1 "GND" H 8750 2800 50  0000 C CNN
+F 2 "" H 8750 2950 50  0000 C CNN
+F 3 "" H 8750 2950 50  0000 C CNN
+	1    8750 2950
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4325 6100 4325 6000
+	8750 2950 8750 2850
 Wire Wire Line
-	4325 6400 4325 6475
-Text GLabel 3775 5450 1    60   Input ~ 0
-BATTERY
-Text GLabel 4750 5450 1    60   Input ~ 0
-BATTERY
+	3125 2125 3250 2125
 Wire Wire Line
-	6750 3850 7050 3850
+	3025 2550 3025 2450
+$Comp
+L awesome-guitar-board-rescue:AP2112-liger-rescue U?
+U 1 1 5A164E45
+P 4400 2525
+F 0 "U?" H 4575 2350 60  0000 C CNN
+F 1 "AP2112" H 4400 2725 60  0000 C CNN
+F 2 "Package_TO_SOT_SMD:SOT-23-5_HandSoldering" H 4400 2200 60  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/diodes-incorporated/AP2112K-3.3TRG1/AP2112K-3.3TRG1DICT-ND/4505257" H 4400 2100 60  0001 C CNN
+F 4 "AP2112K-3.3TRG1" H 4400 2825 60  0001 C CNN "Part Number"
+	1    4400 2525
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5A1650D9
+P 4900 2650
+F 0 "#PWR?" H 4900 2400 50  0001 C CNN
+F 1 "GND" H 4900 2500 50  0000 C CNN
+F 2 "" H 4900 2650 50  0000 C CNN
+F 3 "" H 4900 2650 50  0000 C CNN
+	1    4900 2650
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	2700 3700 2650 3700
+	4850 2600 4900 2600
 Wire Wire Line
-	4950 3800 4950 3850
+	4900 2600 4900 2650
 Wire Wire Line
-	4050 3700 4200 3700
+	5175 2450 5175 2525
 Wire Wire Line
-	3900 4150 3900 4200
+	4850 2450 5175 2450
 Wire Wire Line
-	7950 3950 8150 3950
+	3900 2300 3900 2450
+Connection ~ 3900 2450
+Connection ~ 5175 2450
 Wire Wire Line
-	3625 6500 3600 6500
+	3025 2450 3100 2450
 Wire Wire Line
-	3775 5500 3950 5500
+	8025 2900 8025 2950
 Wire Wire Line
-	3950 6100 3950 6300
+	8175 2450 8325 2450
 Wire Wire Line
-	3625 6000 3625 6025
+	6825 2450 6775 2450
 Wire Wire Line
-	4750 6275 4750 6200
+	3550 2450 3900 2450
+Wire Wire Line
+	3550 2450 3550 2500
+Wire Wire Line
+	8325 2450 8750 2450
+Wire Wire Line
+	3900 2450 3950 2450
+Wire Wire Line
+	5175 2450 5300 2450
+Text HLabel 3550 1800 1    60   Input ~ 0
+V_BAT
+Text HLabel 3125 2125 0    60   Input ~ 0
+V_USB
+Text HLabel 2825 2450 0    60   Input ~ 0
+V_USB
+Text HLabel 3900 2300 1    60   Input ~ 0
+V_IN
+Text HLabel 5300 2450 2    60   Output ~ 0
+3V3
+Text HLabel 6825 2150 1    60   Input ~ 0
+V_USB
+Text HLabel 8175 2250 1    60   Input ~ 0
+V_BAT
 $Comp
 L open-automation:C_1uF C?
-U 1 1 5B83084B
-P 6750 4050
-F 0 "C?" H 6865 4096 50  0000 L CNN
-F 1 "C_1uF" H 6865 4005 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 6850 4350 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/tdk-corporation/CGA3E1X7R1C105M080AC/445-12540-1-ND/3954206" H 6750 3800 50  0001 C CNN
-F 4 "CL10B105KP8NNNC" H 6875 4250 60  0001 C CNN "Part Number"
-	1    6750 4050
+U 1 1 5B1EEF77
+P 5175 2675
+F 0 "C?" H 5290 2721 50  0000 L CNN
+F 1 "C_1uF" H 5290 2630 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 5275 2975 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/tdk-corporation/CGA3E1X7R1C105M080AC/445-12540-1-ND/3954206" H 5175 2425 50  0001 C CNN
+F 4 "CL10B105KP8NNNC" H 5300 2875 60  0001 C CNN "Part Number"
+	1    5175 2675
 	1    0    0    -1  
 $EndComp
 $Comp
 L open-automation:C_1uF C?
-U 1 1 5B83091E
-P 7950 4200
-F 0 "C?" H 8065 4246 50  0000 L CNN
-F 1 "C_1uF" H 8065 4155 50  0000 L CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 8050 4500 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/tdk-corporation/CGA3E1X7R1C105M080AC/445-12540-1-ND/3954206" H 7950 3950 50  0001 C CNN
-F 4 "CL10B105KP8NNNC" H 8075 4400 60  0001 C CNN "Part Number"
-	1    7950 4200
+U 1 1 5B1EF368
+P 3550 2650
+F 0 "C?" H 3450 2750 50  0000 L CNN
+F 1 "C_1uF" H 3300 2550 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 3650 2950 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/tdk-corporation/CGA3E1X7R1C105M080AC/445-12540-1-ND/3954206" H 3550 2400 50  0001 C CNN
+F 4 "CL10B105KP8NNNC" H 3675 2850 60  0001 C CNN "Part Number"
+	1    3550 2650
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:R_10k R?
-U 1 1 5B830C0C
-P 4950 4000
-F 0 "R?" H 5020 4046 50  0000 L CNN
-F 1 "R_10k" H 5020 3955 50  0000 L CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 4880 4000 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-0710KL/311-10KGRCT-ND/729647" V 5030 4000 50  0001 C CNN
-F 4 "MCT06030C1002FP500" V 5130 4100 60  0001 C CNN "Part Number"
-	1    4950 4000
+L open-automation:C_1uF C?
+U 1 1 5B1EF9E4
+P 8750 2700
+F 0 "C?" H 8865 2746 50  0000 L CNN
+F 1 "C_1uF" H 8865 2655 50  0000 L CNN
+F 2 "Capacitor_SMD:C_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 8850 3000 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/tdk-corporation/CGA3E1X7R1C105M080AC/445-12540-1-ND/3954206" H 8750 2450 50  0001 C CNN
+F 4 "CL10B105KP8NNNC" H 8875 2900 60  0001 C CNN "Part Number"
+	1    8750 2700
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:R_2k R?
-U 1 1 5B830DA3
-P 3900 3950
-F 0 "R?" H 3970 3996 50  0000 L CNN
-F 1 "R_2k" H 3970 3905 50  0000 L CNN
-F 2 "Resistors_SMD:R_0603" V 3830 3950 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-072KL/311-2.0KGRCT-ND/729673" V 3980 3950 50  0001 C CNN
-F 4 "ERA-3AEB202V" V 4080 4050 60  0001 C CNN "Part Number"
-	1    3900 3950
-	1    0    0    -1  
-$EndComp
-$Comp
-L open-automation:R_1k R?
-U 1 1 5B830F61
-P 2500 3700
-F 0 "R?" V 2293 3700 50  0000 C CNN
-F 1 "R_1k" V 2384 3700 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 2430 3700 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-3GEYJ102V/P1.0KGDKR-ND/577615" V 2580 3700 50  0001 C CNN
-F 4 "ESR03EZPJ102" V 2680 3800 60  0001 C CNN "Part Number"
-	1    2500 3700
-	0    1    1    0   
-$EndComp
-$Comp
-L open-automation:R_10k R?
-U 1 1 5B83142B
-P 3450 6500
-F 0 "R?" V 3243 6500 50  0000 C CNN
-F 1 "R_10k" V 3334 6500 50  0000 C CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 3380 6500 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-0710KL/311-10KGRCT-ND/729647" V 3530 6500 50  0001 C CNN
-F 4 "MCT06030C1002FP500" V 3630 6600 60  0001 C CNN "Part Number"
-	1    3450 6500
-	0    1    1    0   
-$EndComp
-$Comp
-L open-automation:R_10k R?
-U 1 1 5B83150A
-P 4750 6500
-F 0 "R?" H 4680 6454 50  0000 R CNN
-F 1 "R_10k" H 4680 6545 50  0000 R CNN
-F 2 "Resistor_SMD:R_0603_1608Metric_Pad0.99x1.00mm_HandSolder" V 4680 6500 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-0710KL/311-10KGRCT-ND/729647" V 4830 6500 50  0001 C CNN
-F 4 "MCT06030C1002FP500" V 4930 6600 60  0001 C CNN "Part Number"
-	1    4750 6500
-	-1   0    0    1   
-$EndComp
-$Comp
-L open-automation:C_0.1uF C?
-U 1 1 5B83388A
-P 3100 6500
-F 0 "C?" V 2848 6500 50  0000 C CNN
-F 1 "C_0.1uF" V 2939 6500 50  0000 C CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 3200 6800 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/tdk-corporation/C1608X8R1H104K080AB/445-8818-1-ND/3248223" H 3100 6250 50  0001 C CNN
-F 4 "CL10F104ZO8NNNC" H 3225 6700 60  0001 C CNN "Part Number"
-	1    3100 6500
-	0    1    1    0   
-$EndComp
-$Comp
-L open-automation:C_10uF C?
-U 1 1 5B833752
-P 4325 6250
-F 0 "C?" H 4210 6204 50  0000 R CNN
-F 1 "C_10uF" H 4210 6295 50  0000 R CNN
-F 2 "Capacitor_SMD:C_0603_1608Metric_Pad0.99x1.00mm_HandSolder" H 4425 6550 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/samsung-electro-mechanics/CL10A106MP8NNNC/1276-1871-1-ND/3889957" H 4325 6000 50  0001 C CNN
-F 4 "CL10A106MP8NNNC" H 4450 6450 60  0001 C CNN "Part Number"
-	1    4325 6250
-	-1   0    0    1   
-$EndComp
-Connection ~ 4325 6000
-Wire Wire Line
-	4450 6000 4325 6000
-$Comp
-L open-automation:AZ1117E U?
-U 1 1 5B836733
-P 7450 3950
-F 0 "U?" H 7425 4275 50  0000 C CNN
-F 1 "AZ1117E" H 7425 4184 50  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:SOT-223" H 7450 3550 50  0001 C CIN
-F 3 "https://www.digikey.com/product-detail/en/diodes-incorporated/AZ1117EH-3.3TRG1/AZ1117EH-3.3TRG1DICT-ND/5001336" H 7500 3450 50  0001 C CNN
-F 4 "AZ1117EH-3.3TRG1" H 7650 3750 60  0001 C CNN "Part Number"
-	1    7450 3950
-	1    0    0    -1  
-$EndComp
-$Comp
-L open-automation:PMOS-DMG3413L Q?
-U 1 1 5B836979
-P 4700 3800
-F 0 "Q?" H 4906 3754 50  0000 L CNN
-F 1 "PMOS-DMG3413L" H 4906 3845 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 4900 3725 50  0001 L CIN
-F 3 "https://www.digikey.com/product-detail/en/diodes-incorporated/DMG3413L-7/DMG3413L-7DICT-ND/5218387" H 4900 3875 50  0001 L CNN
-F 4 "DMG3413L-7" H 5000 3975 60  0001 C CNN "Part Number"
-	1    4700 3800
-	-1   0    0    1   
-$EndComp
-$Comp
-L open-automation:18650_Battery_Cell_1043 BT?
-U 1 1 5B836C28
-P 4200 4000
-F 0 "BT?" H 4318 4050 50  0000 L CNN
-F 1 "18650_Battery_Cell_1043" H 4300 4000 50  0001 L CNN
-F 2 "" V 4200 4060 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/keystone-electronics/1043/36-1043-ND/2745669" V 4200 4060 50  0001 C CNN
-F 4 "36-1043-ND" H 4400 4200 60  0001 C CNN "Part Number"
-	1    4200 4000
-	1    0    0    -1  
-$EndComp
-$Comp
-L open-automation:MCP73831T U?
-U 1 1 5B836F1E
-P 3250 3800
-F 0 "U?" H 3225 4147 60  0000 C CNN
-F 1 "MCP73831T" H 3225 4041 60  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23-5" H 3500 3500 60  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/microchip-technology/MCP73831T-2ACI-OT/MCP73831T-2ACI-OTCT-ND/1979802" H 3750 3400 60  0001 C CNN
-F 4 "MCP73831T" H 3200 4100 60  0001 C CNN "Part Number"
-	1    3250 3800
-	1    0    0    -1  
-$EndComp
-$Comp
-L open-automation:LED-GREEN-LTST-C191GKT D?
-U 1 1 5B8373A3
-P 2300 3900
-F 0 "D?" V 2338 3783 50  0000 R CNN
-F 1 "LED-GREEN-LTST-C191GKT" V 2247 3783 50  0000 R CNN
-F 2 "LEDs:LED_0603" H 2200 3900 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/lite-on-inc/LTST-C191GKT/160-1443-1-ND/386828" H 2300 4000 50  0001 C CNN
-F 4 "LTST-C191GKT" H 2400 4100 60  0001 C CNN "Part Number"
-	1    2300 3900
+L open-automation:LED-0603-G D?
+U 1 1 5BBE79A0
+P 6425 2650
+AR Path="/59092AD4/5BBE79A0" Ref="D?"  Part="1" 
+AR Path="/5909D8E3/5BBE79A0" Ref="D?"  Part="1" 
+AR Path="/59CD09A4/5BBE79A0" Ref="D?"  Part="1" 
+F 0 "D?" V 6400 2800 50  0000 R CNN
+F 1 "LED-0603-G" V 6225 2950 50  0000 R CNN
+F 2 "LED_SMD:LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder" H 6325 2650 50  0001 C CNN
+F 3 "https://www.digikey.com/product-detail/en/rohm-semiconductor/SML-D12M8WT86/511-1578-1-ND/1641810" H 6425 2750 50  0001 C CNN
+F 4 "SML-D12M8WT86" H 6525 2850 50  0001 C CNN "Part Number"
+	1    6425 2650
 	0    -1   -1   0   
 $EndComp
-$Comp
-L awesome-guitar-board-rescue:R_1M-open-automation R_1k?
-U 1 1 5B841CCE
-P 3950 5725
-F 0 "R_1k?" H 4020 5771 50  0000 L CNN
-F 1 "R_1M" H 4020 5680 50  0000 L CNN
-F 2 "Resistors_SMD:R_0603" V 3880 5725 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624" V 4030 5725 50  0001 C CNN
-F 4 "RC0603JR-071KL" V 4130 5825 60  0001 C CNN "Part Number"
-	1    3950 5725
-	1    0    0    -1  
-$EndComp
-$Comp
-L awesome-guitar-board-rescue:R_1M-open-automation R_1k?
-U 1 1 5B841D8A
-P 3625 6175
-F 0 "R_1k?" H 3695 6221 50  0000 L CNN
-F 1 "R_1M" H 3695 6130 50  0000 L CNN
-F 2 "Resistors_SMD:R_0603" V 3555 6175 50  0001 C CNN
-F 3 "https://www.digikey.com/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624" V 3705 6175 50  0001 C CNN
-F 4 "RC0603JR-071KL" V 3805 6275 60  0001 C CNN "Part Number"
-	1    3625 6175
-	1    0    0    -1  
-$EndComp
-$Comp
-L Transistor_BJT:2N3904 Q?
-U 1 1 5B844D0E
-P 3525 5775
-F 0 "Q?" H 3716 5821 50  0000 L CNN
-F 1 "2N3904" H 3716 5730 50  0000 L CNN
-F 2 "Package_TO_SOT_THT:TO-92_Inline" H 3725 5700 50  0001 L CIN
-F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3904.pdf" H 3525 5775 50  0001 L CNN
-	1    3525 5775
-	1    0    0    -1  
-$EndComp
-$Comp
-L Transistor_BJT:2N3904 Q?
-U 1 1 5B845061
-P 4650 6000
-F 0 "Q?" H 4841 6046 50  0000 L CNN
-F 1 "2N3904" H 4841 5955 50  0000 L CNN
-F 2 "Package_TO_SOT_THT:TO-92_Inline" H 4850 5925 50  0001 L CIN
-F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3904.pdf" H 4650 6000 50  0001 L CNN
-	1    4650 6000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Transistor_BJT:2N3904 Q?
-U 1 1 5B846439
-P 3850 6500
-F 0 "Q?" H 4041 6546 50  0000 L CNN
-F 1 "2N3904" H 4041 6455 50  0000 L CNN
-F 2 "Package_TO_SOT_THT:TO-92_Inline" H 4050 6425 50  0001 L CIN
-F 3 "https://www.fairchildsemi.com/datasheets/2N/2N3904.pdf" H 3850 6500 50  0001 L CNN
-	1    3850 6500
-	1    0    0    -1  
-$EndComp
+Text HLabel 3900 2650 3    50   Input ~ 0
+POWER_EN
 Wire Wire Line
-	3625 6000 4325 6000
-Connection ~ 3950 6100
+	3900 2650 3900 2600
 Wire Wire Line
-	3950 5875 3950 6100
+	3900 2600 3950 2600
 $EndSCHEMATC
