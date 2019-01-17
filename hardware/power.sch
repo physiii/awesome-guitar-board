@@ -526,7 +526,7 @@ V_USB
 Text HLabel 8175 2250 1    60   Input ~ 0
 V_BAT
 $Comp
-L open-automation:C_1uF C?
+L awesome-guitar-board-rescue:C_1uF-open-automation C?
 U 1 1 5B1EEF77
 P 5175 2675
 F 0 "C?" H 5290 2721 50  0000 L CNN
@@ -538,7 +538,7 @@ F 4 "CL10B105KP8NNNC" H 5300 2875 60  0001 C CNN "Part Number"
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:C_1uF C?
+L awesome-guitar-board-rescue:C_1uF-open-automation C?
 U 1 1 5B1EF368
 P 3550 2650
 F 0 "C?" H 3450 2750 50  0000 L CNN
@@ -550,7 +550,7 @@ F 4 "CL10B105KP8NNNC" H 3675 2850 60  0001 C CNN "Part Number"
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:C_1uF C?
+L awesome-guitar-board-rescue:C_1uF-open-automation C?
 U 1 1 5B1EF9E4
 P 8750 2700
 F 0 "C?" H 8865 2746 50  0000 L CNN
@@ -562,7 +562,7 @@ F 4 "CL10B105KP8NNNC" H 8875 2900 60  0001 C CNN "Part Number"
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:LED-0603-G D?
+L awesome-guitar-board-rescue:LED-0603-G-open-automation D?
 U 1 1 5BBE79A0
 P 6425 2650
 AR Path="/59092AD4/5BBE79A0" Ref="D?"  Part="1" 

@@ -183,7 +183,7 @@ SCL
 Text HLabel 7175 5100 2    60   BiDi ~ 0
 SDA
 $Comp
-L open-automation:C_1uF C?
+L awesome-guitar-board-rescue:C_1uF-open-automation C?
 U 1 1 5B1F1B60
 P 5075 5175
 F 0 "C?" H 5100 5250 50  0000 L CNN
@@ -195,7 +195,7 @@ F 4 "CL10B105KP8NNNC" H 5200 5375 60  0001 C CNN "Part Number"
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:C_10uF C?
+L awesome-guitar-board-rescue:C_10uF-open-automation C?
 U 1 1 5B1F22B0
 P 4675 5175
 F 0 "C?" H 4550 5250 50  0000 L CNN
@@ -207,7 +207,7 @@ F 4 "CL10A106MP8NNNC" H 4800 5375 60  0001 C CNN "Part Number"
 	1    0    0    -1  
 $EndComp
 $Comp
-L open-automation:R_10k R?
+L awesome-guitar-board-rescue:R_10k-open-automation R?
 U 1 1 5B31EE0D
 P 6875 5100
 F 0 "R?" V 6875 5075 50  0000 L CNN
@@ -219,7 +219,7 @@ F 4 "MCT06030C1002FP500" V 7055 5200 60  0001 C CNN "Part Number"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L open-automation:R_10k R?
+L awesome-guitar-board-rescue:R_10k-open-automation R?
 U 1 1 5B31EE98
 P 6875 5350
 F 0 "R?" V 6875 5325 50  0000 L CNN
@@ -231,7 +231,7 @@ F 4 "MCT06030C1002FP500" V 7055 5450 60  0001 C CNN "Part Number"
 	0    -1   -1   0   
 $EndComp
 $Comp
-L open-automation:R_47.5 R?
+L awesome-guitar-board-rescue:R_47.5-open-automation R?
 U 1 1 5B321D4E
 P 7300 2250
 F 0 "R?" V 7093 2250 50  0000 C CNN
@@ -243,7 +243,7 @@ F 4 "ERJ-3EKF47R5V" V 7480 2350 60  0001 C CNN "Part Number"
 	0    1    1    0   
 $EndComp
 $Comp
-L open-automation:R_47.5 R?
+L awesome-guitar-board-rescue:R_47.5-open-automation R?
 U 1 1 5B322166
 P 4500 2950
 F 0 "R?" V 4293 2950 50  0000 C CNN
